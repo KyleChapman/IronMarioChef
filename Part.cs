@@ -42,18 +42,14 @@ namespace IronMarioChef
         {
             totalParts++;
             partId = totalParts;
-
-            parts.Add(this);
         }
 
         /// <summary>
         /// Constructor that creates a part supported in all game styles.
         /// </summary>
         /// <param name="name">The name of the part.</param>
-        public Part(string name)
+        public Part(string name) : this()
         {
-            totalParts++;
-            partId = totalParts;
             partName = name;
 
             // This part is supported in all game styles.
@@ -65,19 +61,14 @@ namespace IronMarioChef
             smwParts += 1;
             nsmbuParts += 1;
             sm3dwParts += 1;
-
-            // Add this part to the list.
-            parts.Add(this);
         }
 
         /// <summary>
         /// Constructor that creates a part supported either (true) ONLY Super Mario 3D World or (false) all styles BUT Super Mario 3D World.
         /// </summary>
         /// <param name="name">The name of the part.</param>/// <param name="isSuperMario3dWorldSupported">true if this part is unique to Super Mario 3D World; false is this part is allowed in all styles other than Super Mario 3D World</param>
-        public Part(string name, bool isSuperMario3dWorldSupported)
+        public Part(string name, bool isSuperMario3dWorldSupported) : this()
         {
-            totalParts++;
-            partId = totalParts;
             partName = name;
             
             // Check if this part is supported for Super Mario 3D World.
@@ -96,9 +87,6 @@ namespace IronMarioChef
                 smwParts += 1;
                 nsmbuParts += 1;
             }
-
-            // Add this part to the list.
-            parts.Add(this);
         }
 
         /// <summary>
@@ -110,10 +98,8 @@ namespace IronMarioChef
         /// <param name="isInSuperMarioWorld">Is the part valid in Super Mario World?</param>
         /// <param name="isInNewSuperMarioBrosU">Is the part valid in New Super Mario Bros. U?</param>
         /// <param name="isInSuperMario3dWorld">Is the part valid in Super Mario 3D World?</param>
-        public Part(string name, bool isInSuperMarioBros, bool isInSuperMarioBros3, bool isInSuperMarioWorld, bool isInNewSuperMarioBrosU, bool isInSuperMario3dWorld)
+        public Part(string name, bool isInSuperMarioBros, bool isInSuperMarioBros3, bool isInSuperMarioWorld, bool isInNewSuperMarioBrosU, bool isInSuperMario3dWorld) : this()
         {
-            totalParts++;
-            partId = totalParts;
             partName = name;
 
             // Check if the part is valid in Super Mario Bros.
@@ -146,9 +132,6 @@ namespace IronMarioChef
                 validStyles[4] = true;
                 sm3dwParts += 1;
             }
-
-            // Add this part to the list.
-            parts.Add(this);
         }
 
         #endregion
@@ -361,6 +344,188 @@ namespace IronMarioChef
             }
 
             return partsArray;
+        }
+
+        public void InitializeParts()
+        {
+            // Terrain parts.
+            parts.Add(new Part("? Block"));
+            parts.Add(new Part("Brick Block", true, true, false, true, true));
+            parts.Add(new Part("Rotating Block", false, false, true, false, false));
+            parts.Add(new Part("Bridge", false));
+            parts.Add(new Part("Cloud Block"));
+            parts.Add(new Part("Conveyor Belt"));
+            parts.Add(new Part("Donut Block"));
+            parts.Add(new Part("Gentle Slope"));
+            parts.Add(new Part("Ground"));
+            parts.Add(new Part("Hard Block"));
+            parts.Add(new Part("Hidden Block"));
+            parts.Add(new Part("Ice Block"));
+            parts.Add(new Part("Mushroom Platform", false));
+            parts.Add(new Part("Music Block", false));
+            parts.Add(new Part("Note Block", false));
+            parts.Add(new Part("Pipe"));
+            parts.Add(new Part("Semisolid Platform"));
+            parts.Add(new Part("Steep Slope"));
+            parts.Add(new Part("Spike Trap", false));
+
+            // Style-specific power-ups.
+            parts.Add(new Part("Big Mushroom", true, false, false, false, false));
+            parts.Add(new Part("Super Leaf", false, true, false, false, false));
+            parts.Add(new Part("Cape Feather", false, false, true, false, false));
+            parts.Add(new Part("Propeller Mushroom", false, false, false, true, false));
+            parts.Add(new Part("SMB2 Mushroom", true, false, false, false, false));
+            parts.Add(new Part("Frog Suit", false, true, false, false, false));
+            parts.Add(new Part("P Balloon", false, false, true, false, false));
+            parts.Add(new Part("Super Acorn", false, false, false, true, false));
+
+            // Other items/power-ups.
+            parts.Add(new Part("1-up Mushroom / Rotten Mushroom"));
+            parts.Add(new Part("Coin"));
+            parts.Add(new Part("Fire Flower"));
+            parts.Add(new Part("Frozen Coin", false));
+            parts.Add(new Part("Master Sword", true, false, false, false, false));
+            parts.Add(new Part("Multi-Coin"));
+            parts.Add(new Part("Pink Coin"));
+            parts.Add(new Part("Shoe Goomba", true, true, false, false, false));
+            parts.Add(new Part("Yoshi Egg", false, false, true, true, false));
+            parts.Add(new Part("Stiletto Goomba", true, true, false, false, false));
+            parts.Add(new Part("Big Egg", false, false, true, true, false));
+            parts.Add(new Part("Super Mushroom"));
+            parts.Add(new Part("Super Star"));
+            parts.Add(new Part("Superball Flower", true, false, false, false, false));
+
+            // Enemies, and enemy-associated items.
+            parts.Add(new Part("Angry Sun", false));
+            parts.Add(new Part("Blooper"));
+            parts.Add(new Part("Blooper Nanny"));
+            parts.Add(new Part("Bob-omb"));
+            parts.Add(new Part("Boo"));
+            parts.Add(new Part("Boo Buddies", false));
+            parts.Add(new Part("Boom Boom"));
+            parts.Add(new Part("Bowser", false));
+            parts.Add(new Part("Bowser Jr.", false));
+            parts.Add(new Part("Buzzy Beetle", false));
+            parts.Add(new Part("Buzzy Beetle Shell", false));
+            parts.Add(new Part("Chain Chomp", false));
+            parts.Add(new Part("Cheep Cheep"));
+            parts.Add(new Part("Deep Cheep / Blurp"));
+            parts.Add(new Part("Dry Bones"));
+            parts.Add(new Part("Dry Bones Shell", false));
+            parts.Add(new Part("Fire Koopa Clown Car", false));
+            parts.Add(new Part("Fire Pirahna Plant"));
+            parts.Add(new Part("Fish Bone"));
+            parts.Add(new Part("Goomba", true, true, false, true, true));
+            parts.Add(new Part("Galoomba", false, false, true, false, false));
+            parts.Add(new Part("Goombrat", true, true, false, true, false));
+            parts.Add(new Part("Goombud", false, false, true, false, false));
+            parts.Add(new Part("Hammer Bro"));
+            parts.Add(new Part("Koopa Clown Car", false));
+            parts.Add(new Part("Koopa Troopa"));
+            parts.Add(new Part("Lakitu", false));
+            parts.Add(new Part("Lakitu's Cloud", false));
+            parts.Add(new Part("Magikoopa"));
+            parts.Add(new Part("Monty Mole", false));
+            parts.Add(new Part("Moon", false));
+            parts.Add(new Part("Muncher", false));
+            parts.Add(new Part("Pirahna Plant"));
+            parts.Add(new Part("Pokey"));
+            parts.Add(new Part("Rocky Wrench"));
+            parts.Add(new Part("Sledge Bro"));
+            parts.Add(new Part("Spike"));
+            parts.Add(new Part("Spike Ball / Snow Ball"));
+            parts.Add(new Part("Spike Top", false));
+            parts.Add(new Part("Spiny"));
+            parts.Add(new Part("Spiny Shell", false));
+            parts.Add(new Part("Stretch"));
+            parts.Add(new Part("Thwomp"));
+            parts.Add(new Part("Unchained Chomp", false));
+            parts.Add(new Part("Wiggler", false));
+            parts.Add(new Part("Larry", false));
+            parts.Add(new Part("Iggy", false));
+            parts.Add(new Part("Wendy", false));
+            parts.Add(new Part("Lemmy", false));
+            parts.Add(new Part("Roy", false));
+            parts.Add(new Part("Morton", false));
+            parts.Add(new Part("Ludwig", false));
+            parts.Add(new Part("Mechakoopa"));
+            parts.Add(new Part("Blasta Mechakoopa"));
+            parts.Add(new Part("Zappa Mechakoopa"));
+
+            // Gizmos
+            parts.Add(new Part("Arrow Sign"));
+            parts.Add(new Part("Banzai Bill"));
+            parts.Add(new Part("Bull's-Eye Banzai"));
+            parts.Add(new Part("Bill Blaster"));
+            parts.Add(new Part("Bull's-Eye Blaster"));
+            parts.Add(new Part("Bumper", false));
+            parts.Add(new Part("Burner", false));
+            parts.Add(new Part("Cannon", false));
+            parts.Add(new Part("Checkpoint Flag"));
+            parts.Add(new Part("Cursed Key", true, false, false, false, false));
+            parts.Add(new Part("Dotted-Line Block"));
+            parts.Add(new Part("Fast Snake Block", false));
+            parts.Add(new Part("Fire Bar", false));
+            parts.Add(new Part("Flimsy Lift", false));
+            parts.Add(new Part("Grinder", false));
+            parts.Add(new Part("Icicle"));
+            parts.Add(new Part("Key"));
+            parts.Add(new Part("Key Door"));
+            parts.Add(new Part("Lava Lift (Skull Raft)", false));
+            parts.Add(new Part("Lift", false));
+            parts.Add(new Part("ON/OFF Switch"));
+            parts.Add(new Part("One-Way Wall", false));
+            parts.Add(new Part("P Block"));
+            parts.Add(new Part("P Warp Door"));
+            parts.Add(new Part("P Switch"));
+            parts.Add(new Part("POW Block"));
+            parts.Add(new Part("Seesaw", false));
+            parts.Add(new Part("Skewer", false));
+            parts.Add(new Part("Snake Block", false));
+            parts.Add(new Part("Swinging Claw", false));
+            parts.Add(new Part("Track", false));
+            parts.Add(new Part("Twister"));
+            parts.Add(new Part("Vine", false));
+            parts.Add(new Part("Warp Door"));
+
+            // Super Mario 3D World-specific parts.
+            parts.Add(new Part("Clear Pipe", true));
+            parts.Add(new Part("Super Bell", true));
+            parts.Add(new Part("Super Hammer", true));
+            parts.Add(new Part("Boomerang Flower", true));
+            parts.Add(new Part("Cannon Box", true));
+            parts.Add(new Part("POW Box", true));
+            parts.Add(new Part("Propeller Box", true));
+            parts.Add(new Part("Goomba Mask", true));
+            parts.Add(new Part("Bullet Bill Mask", true));
+            parts.Add(new Part("Red POW Box", true));
+            parts.Add(new Part("Ant Trooper", true));
+            parts.Add(new Part("Horned Ant Trooper", true));
+            parts.Add(new Part("Skipsqueak", true));
+            parts.Add(new Part("Spiny Skipsqueak", true));
+            parts.Add(new Part("Stingby", true));
+            parts.Add(new Part("Pirahna Creeper", true));
+            parts.Add(new Part("Fire Bro", true));
+            parts.Add(new Part("Heavy Fire Bro", true));
+            parts.Add(new Part("Hop-Chops", true));
+            parts.Add(new Part("Peepa", true));
+            parts.Add(new Part("Meowser", true));
+            parts.Add(new Part("Pom Pom", true));
+            parts.Add(new Part("Charvaargh", true));
+            parts.Add(new Part("Bully", true));
+            parts.Add(new Part("Porcupuffer", true));
+            parts.Add(new Part("Koopa Troopa Car", true));
+            parts.Add(new Part("! Block", true));
+            parts.Add(new Part("Tree", true));
+            parts.Add(new Part("Crate", true));
+            parts.Add(new Part("Warp Box", true));
+            parts.Add(new Part("Spike Block", true));
+            parts.Add(new Part("Track Block", true));
+            parts.Add(new Part("ON/OFF Trampoline", true));
+            parts.Add(new Part("Mushroom Trampoline", true));
+            parts.Add(new Part("Cloud Lift", true));
+            parts.Add(new Part("Dash Block", true));
+            parts.Add(new Part("Blinking Block", true));
         }
 
         /// <summary>
