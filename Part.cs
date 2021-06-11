@@ -367,7 +367,9 @@ namespace IronMarioChef
             parts.Add(new Part("Pipe"));
             parts.Add(new Part("Semisolid Platform"));
             parts.Add(new Part("Steep Slope"));
-            parts.Add(new Part("Spike Trap", false));
+            parts.Add(new Part("Spike Trap", true, false, false, true, false));
+            parts.Add(new Part("Spike Trap / Jelectro", false, true, false, false, false));
+            parts.Add(new Part("Spike Trap / Sea Urchin", false, false, true, false, false));
 
             // Style-specific power-ups.
             parts.Add(new Part("Big Mushroom", true, false, false, false, false));
@@ -398,7 +400,7 @@ namespace IronMarioChef
             // Enemies, and enemy-associated items.
             parts.Add(new Part("Angry Sun", false));
             parts.Add(new Part("Blooper"));
-            parts.Add(new Part("Blooper Nanny"));
+            parts.Add(new Part("Blooper Nanny", false));
             parts.Add(new Part("Bob-omb"));
             parts.Add(new Part("Boo"));
             parts.Add(new Part("Boo Buddies", false));
@@ -409,7 +411,8 @@ namespace IronMarioChef
             parts.Add(new Part("Buzzy Beetle Shell", false));
             parts.Add(new Part("Chain Chomp", false));
             parts.Add(new Part("Cheep Cheep"));
-            parts.Add(new Part("Deep Cheep / Blurp"));
+            parts.Add(new Part("Deep Cheep", true, true, false, true, true));
+            parts.Add(new Part("Blurp", false, false, true, false, false));
             parts.Add(new Part("Dry Bones"));
             parts.Add(new Part("Dry Bones Shell", false));
             parts.Add(new Part("Fire Koopa Clown Car", false));
