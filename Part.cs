@@ -1,6 +1,6 @@
 ﻿// Author:  Kyle Chapman
 // Created: June 10, 2021
-// Modified: June 10, 2021
+// Modified: June 13, 2021
 // Description:
 //  This class represents parts for use in Super Mario Maker 2, for use with
 // a randomization engine. Methods to determine what game styles the parts are
@@ -23,21 +23,18 @@ namespace IronMarioChef
 
         // Static variables, shared among all parts.
         private static int totalPartCount = 0;
-        private static int smbPartCount = 0;
-        private static int smb3PartCount = 0;
-        private static int smwPartCount = 0;
-        private static int nsmbuPartCount = 0;
-        private static int sm3dwPartCount = 0;
-
+        
         // A list of all parts that will be added to as parts are created.
         private static List<Part> parts = new List<Part>();
 
-        // An array of parts specific to each game style.
-        private static Part[] smbParts;
-        private static Part[] smb3Parts;
-        private static Part[] smwParts;
-        private static Part[] nsmbuParts;
-        private static Part[] sm3dwParts;
+        // A game-specific list of parts for each game style.
+        // It's a lot of data, but it's better to populate these once
+        // than do it every single time we pick a random value.
+        private static List<Part> smbParts = new List<Part>();
+        private static List<Part> smb3Parts = new List<Part>();
+        private static List<Part> smwParts = new List<Part>();
+        private static List<Part> nsmbuParts = new List<Part>();
+        private static List<Part> sm3dwParts = new List<Part>();
 
         #endregion
 
@@ -62,13 +59,6 @@ namespace IronMarioChef
 
             // This part is supported in all game styles.
             validStyles = new bool[] { true, true, true, true, true };
-
-            // Increment the number of valid parts for all game styles.
-            smbPartCount += 1;
-            smb3PartCount += 1;
-            smwPartCount += 1;
-            nsmbuPartCount += 1;
-            sm3dwPartCount += 1;
         }
 
         /// <summary>
@@ -84,16 +74,11 @@ namespace IronMarioChef
             {
                 // This part is only supported in Super Mario 3D World.
                 validStyles = new bool[] { false, false, false, false, true };
-                sm3dwPartCount += 1;
             }
             else
             {
                 // This part is supported in all game styles other than Super Mario 3D World.
                 validStyles = new bool[] { true, true, true, true, false };
-                smbPartCount += 1;
-                smb3PartCount += 1;
-                smwPartCount += 1;
-                nsmbuPartCount += 1;
             }
         }
 
@@ -114,31 +99,26 @@ namespace IronMarioChef
             if (isInSuperMarioBros)
             {
                 validStyles[(int)GameStyle.SuperMarioBros] = true;
-                smbPartCount += 1;
             }
             // Check if the part is valid in Super Mario Bros. 3
             if (isInSuperMarioBros3)
             {
                 validStyles[(int)GameStyle.SuperMarioBros3] = true;
-                smb3PartCount += 1;
             }
             // Check if the part is valid in Super Mario World
             if (isInSuperMarioWorld)
             {
                 validStyles[(int)GameStyle.SuperMarioWorld] = true;
-                smwPartCount += 1;
             }
             // Check if the part is valid in New Super Mario Bros. U
             if (isInNewSuperMarioBrosU)
             {
                 validStyles[(int)GameStyle.NewSuperMarioBrosU] = true;
-                nsmbuPartCount += 1;
             }
             // Check if the part is valid in Super Mario 3D World
             if (isInSuperMario3dWorld)
             {
                 validStyles[(int)GameStyle.SuperMario3DWorld] = true;
-                sm3dwPartCount += 1;
             }
         }
 
@@ -252,37 +232,48 @@ namespace IronMarioChef
         #region "Functions"
 
         /// <summary>
-        /// Gets an array of all parts supported in a given game style.
+        /// Gets a List of all parts.
         /// </summary>
-        /// <param name="style">A GameStyle (0-4); the style you want an array of compatible parts for</param>
-        /// <returns>An array of parts supported in the specified style.</returns>
-        public static Part[] GetParts(GameStyle style)
+        /// <returns>A List of all parts.</returns>
+        public static List<Part> GetParts()
         {
-            // Check the game style and based on the style, return that array.
+            return parts;
+        }
+
+        /// <summary>
+        /// Gets a List of all parts supported in a given game style.
+        /// </summary>
+        /// <param name="style">A GameStyle (0-4); the style you want a List of compatible parts for</param>
+        /// <returns>A List of parts supported in the specified style.</returns>
+        public static List<Part> GetParts(GameStyle style)
+        {
+            // SMB is requested; return all SMB parts.
             if (style == GameStyle.SuperMarioBros)
             {
                 return smbParts;
             }
+            // SMB3 is requested; return all SMB3 parts.
             else if (style == GameStyle.SuperMarioBros3)
             {
                 return smb3Parts;
             }
+
+            // SMW is requested; return all SMW parts.
             else if (style == GameStyle.SuperMarioWorld)
             {
                 return smwParts;
             }
+
+            // NSMBU is requested; return all NSMBU parts.
             else if (style == GameStyle.NewSuperMarioBrosU)
             {
                 return nsmbuParts;
             }
-            else if (style == GameStyle.SuperMario3DWorld)
-            {
-                return sm3dwParts;
-            }
-            // In the should-be-impossible eventuality that the game style doesn't match anything, use SMB as a default.
+
+            // Else, all that's left is SM3DW. Return that.
             else
             {
-                return smbParts;
+                return sm3dwParts;
             }
         }
 
@@ -481,59 +472,40 @@ namespace IronMarioChef
             parts.Add(new Part("Blinking Block", true));
 
             #endregion
-            #region "Array Initialization"
 
-            // Here we populate the class's static arrays after the parts
-            // are created. This is done to save processing compared to
-            // the original design of this class; the arrays only ever need
-            // to be populated once and not dynamically generated every
-            // time a function is called.
-
-            // Initialize the arrays with their now-known lengths.
-            smbParts = new Part[smbPartCount];
-            smb3Parts = new Part[smb3PartCount];
-            smwParts = new Part[smwPartCount];
-            nsmbuParts = new Part[nsmbuPartCount];
-            sm3dwParts = new Part[sm3dwPartCount];
-
-            // Count the parts added.
-            int smbPartsAdded = 0;
-            int smb3PartsAdded = 0;
-            int smwPartsAdded = 0;
-            int nsmbuPartsAdded = 0;
-            int sm3dwPartsAdded = 0;
+            #region "List Initialization"
 
             // Count through the list to assign values to each array.
             foreach (Part candidatePart in parts)
             {
+                // If the part is SMB, add it to the list.
                 if (candidatePart.InSuperMarioBros)
                 {
-                    smbParts[smbPartsAdded] = candidatePart;
-                    smbPartsAdded++;
+                    smbParts.Add(candidatePart);
                 }
+                // If the part is SMB3, add it to the list.
                 if (candidatePart.InSuperMarioBros3)
                 {
-                    smb3Parts[smb3PartsAdded] = candidatePart;
-                    smb3PartsAdded++;
+                    smb3Parts.Add(candidatePart);
                 }
-                if (candidatePart.InSuperMarioWorld)
+                // If the part is SMW, add it to the list.
+                else if (candidatePart.InSuperMarioWorld)
                 {
-                    smwParts[smwPartsAdded] = candidatePart;
-                    smwPartsAdded++;
+                    smwParts.Add(candidatePart);
                 }
-                if (candidatePart.InNewSuperMarioBrosU)
+                // If the part is NSMBU, add it to the list.
+                else if (candidatePart.InNewSuperMarioBrosU)
                 {
-                    nsmbuParts[nsmbuPartsAdded] = candidatePart;
-                    nsmbuPartsAdded++;
+                    nsmbuParts.Add(candidatePart);
                 }
-                if (candidatePart.InSuperMario3dWorld)
+                // If the part is SM3DW, add it to the list.
+                else if (candidatePart.InSuperMario3dWorld)
                 {
-                    sm3dwParts[sm3dwPartsAdded] = candidatePart;
-                    sm3dwPartsAdded++;
+                    sm3dwParts.Add(candidatePart);
                 }
-
-                #endregion
             }
+
+            #endregion
         }
 
         /// <summary>

@@ -24,8 +24,8 @@ namespace IronMarioChef
 
         // Variables representing all randomized values.
         // Class-level variables are a bit yucky but these are used in more than one function/event handler and perhaps even moreso later.
-        int currentGameStyle;
-        int currentCourseStyle;
+        GameStyle currentGameStyle;
+        CourseStyle currentCourseStyle;
         int dayOrNight;
         int currentPrimaryPart;
         int currentSecondaryPart;
@@ -61,47 +61,50 @@ namespace IronMarioChef
         {
             // Processing.
             // Randomize the game style and store it as an integer.
-            currentGameStyle = GetRandomIndex(gameStyles);
+            currentGameStyle = (GameStyle)GetRandomIndex(gameStyles);
 
             // Randomize the course style (as an integer) and a value indicating whether it's day or night.
-            currentCourseStyle = GetRandomIndex(courseStyles);
+            currentCourseStyle = (CourseStyle)GetRandomIndex(courseStyles);
             dayOrNight = randomValue.Next(0, 2);
 
             // Randomize the primary part and store it as an integer.
-            currentPrimaryPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
+            currentPrimaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
             
             // Randomize the secondary part (as an integer) and repeat if it matches the primary part.
             do
             {
-                currentSecondaryPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
+                currentSecondaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
             }
             while (currentPrimaryPart == currentSecondaryPart);
 
             // Randomize the banned part (as an integer) and repeat if it matches the other parts selected so far.
             do
             {
-                currentBannedPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
+                currentBannedPart = GetRandomIndex(Part.GetParts(currentGameStyle));
             }
             while (currentPrimaryPart == currentBannedPart || currentSecondaryPart == currentBannedPart);
 
             // Output.
             // Output the text for the random game style.
-            textBoxGameStyle.Text = gameStyles[currentGameStyle];
-            
-            // Output the text for the random course style, including whether it's day or night.
+            textBoxGameStyle.Text = gameStyles[(int)currentGameStyle];
+
+            // Output the text for the random course style.
+            textBoxCourseStyle.Text = courseStyles[(int)currentCourseStyle];
+
+            // Add into the course style something identifying whether it's day or night.
             if (dayOrNight == Day)
             {
-                textBoxCourseStyle.Text = courseStyles[currentCourseStyle] + " (Day)";
+                textBoxCourseStyle.Text += " (Day)";
             }
             else
             {
-                textBoxCourseStyle.Text = courseStyles[currentCourseStyle] + " (Night)";
+                textBoxCourseStyle.Text += " (Night)";
             }
 
             // Assign the randomized parts to the textboxes.
-            textBoxPrimaryPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentPrimaryPart].ToString();
-            textBoxSecondaryPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentSecondaryPart].ToString();
-            textBoxBannedPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentBannedPart].ToString();
+            textBoxPrimaryPart.Text = Part.GetParts(currentGameStyle)[currentPrimaryPart].ToString();
+            textBoxSecondaryPart.Text = Part.GetParts(currentGameStyle)[currentSecondaryPart].ToString();
+            textBoxBannedPart.Text = Part.GetParts(currentGameStyle)[currentBannedPart].ToString();
         }
 
         /// <summary>
@@ -144,13 +147,13 @@ namespace IronMarioChef
         }
 
         /// <summary>
-        /// Returns a random index from an array of Parts.
+        /// Returns a random index from a List of Parts.
         /// </summary>
-        /// <returns>A random integer between 0 and the length of the array</returns>
-        private int GetRandomIndex(Part[] arrayToRandomize)
+        /// <returns>A random integer between 0 and the length of the List</returns>
+        private int GetRandomIndex(List<Part> listToRandomize)
         {
             // Generate a random number between 0 and the length of the array.
-            int randomIndex = randomValue.Next(0, arrayToRandomize.Length);
+            int randomIndex = randomValue.Next(0, listToRandomize.Count);
 
             return randomIndex;
         }
