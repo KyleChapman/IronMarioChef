@@ -30,10 +30,7 @@ namespace IronMarioChef
         int currentPrimaryPart;
         int currentSecondaryPart;
         int currentBannedPart;
-        string currentPrimaryPartName;
-        string currentSecondaryPartName;
-        string currentBannedPartName;
-
+        
         Random randomValue = new Random();
 
         // Arrays containing the various game and course styles to reduce the amount of decision logic.
@@ -44,38 +41,6 @@ namespace IronMarioChef
         const int Day = 0;
         const int Night = 1;
 
-        #endregion
-        #region "Enumerations"
-
-        /// <summary>
-        /// A value from 0-4 representing the various game styles for neatly-named comparisons later.
-        /// </summary>
-        enum GameStyle
-        {
-            SuperMarioBros,
-            SuperMarioBros3,
-            SuperMarioWorld,
-            NewSuperMarioBrosU,
-            SuperMario3DWorld
-        }
-
-        /// <summary>
-        /// A value from 0-9 representing the various course styles for neatly-named comparisons later.
-        /// </summary>
-        enum CourseStyle
-        {
-            Ground,
-            Underground,
-            Underwater,
-            GhostHouse,
-            Castle,
-            Airship,
-            Forest,
-            Sky,
-            Desert,
-            Snow
-        }
-        
         #endregion
 
         /// <summary>
@@ -102,106 +67,20 @@ namespace IronMarioChef
             currentCourseStyle = GetRandomIndex(courseStyles);
             dayOrNight = randomValue.Next(0, 2);
 
-            if (currentGameStyle == (int)GameStyle.SuperMarioBros)
-            {
-                // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetSuperMarioBrosParts());
-                currentPrimaryPartName = Part.GetSuperMarioBrosParts()[currentPrimaryPart].ToString();
-            }
-            else if (currentGameStyle == (int)GameStyle.SuperMarioBros3)
-            {
-                // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetSuperMarioBros3Parts());
-                currentPrimaryPartName = Part.GetSuperMarioBros3Parts()[currentPrimaryPart].ToString();
-            }
-            else if (currentGameStyle == (int)GameStyle.SuperMarioWorld)
-            {
-                // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetSuperMarioWorldParts());
-                currentPrimaryPartName = Part.GetSuperMarioWorldParts()[currentPrimaryPart].ToString();
-            }
-            else if (currentGameStyle == (int)GameStyle.NewSuperMarioBrosU)
-            {
-                // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetNewSuperMarioBrosUParts());
-                currentPrimaryPartName = Part.GetNewSuperMarioBrosUParts()[currentPrimaryPart].ToString();
-            }
-            else if (currentGameStyle == (int)GameStyle.SuperMario3DWorld)
-            {
-                // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetSuperMario3dWorldParts());
-                currentPrimaryPartName = Part.GetSuperMario3dWorldParts()[currentPrimaryPart].ToString();
-            }
-
+            // Randomize the primary part and store it as an integer.
+            currentPrimaryPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
+            
             // Randomize the secondary part (as an integer) and repeat if it matches the primary part.
             do
             {
-                if (currentGameStyle == (int)GameStyle.SuperMarioBros)
-                {
-                    // Randomize the secondary part and store it as an integer.
-                    currentSecondaryPart = GetRandomIndex(Part.GetSuperMarioBrosParts());
-                    currentSecondaryPartName = Part.GetSuperMarioBrosParts()[currentSecondaryPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMarioBros3)
-                {
-                    // Randomize the secondary part and store it as an integer.
-                    currentSecondaryPart = GetRandomIndex(Part.GetSuperMarioBros3Parts());
-                    currentSecondaryPartName = Part.GetSuperMarioBros3Parts()[currentSecondaryPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMarioWorld)
-                {
-                    // Randomize the secondary part and store it as an integer.
-                    currentSecondaryPart = GetRandomIndex(Part.GetSuperMarioWorldParts());
-                    currentSecondaryPartName = Part.GetSuperMarioWorldParts()[currentSecondaryPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.NewSuperMarioBrosU)
-                {
-                    // Randomize the secondary part and store it as an integer.
-                    currentSecondaryPart = GetRandomIndex(Part.GetNewSuperMarioBrosUParts());
-                    currentSecondaryPartName = Part.GetNewSuperMarioBrosUParts()[currentSecondaryPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMario3DWorld)
-                {
-                    // Randomize the secondary part and store it as an integer.
-                    currentSecondaryPart = GetRandomIndex(Part.GetSuperMario3dWorldParts());
-                    currentSecondaryPartName = Part.GetSuperMario3dWorldParts()[currentSecondaryPart].ToString();
-                }
+                currentSecondaryPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
             }
             while (currentPrimaryPart == currentSecondaryPart);
 
             // Randomize the banned part (as an integer) and repeat if it matches the other parts selected so far.
             do
             {
-                if (currentGameStyle == (int)GameStyle.SuperMarioBros)
-                {
-                    // Randomize the banned part and store it as an integer.
-                    currentBannedPart = GetRandomIndex(Part.GetSuperMarioBrosParts());
-                    currentBannedPartName = Part.GetSuperMarioBrosParts()[currentBannedPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMarioBros3)
-                {
-                    // Randomize the banned part and store it as an integer.
-                    currentBannedPart = GetRandomIndex(Part.GetSuperMarioBros3Parts());
-                    currentBannedPartName = Part.GetSuperMarioBros3Parts()[currentBannedPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMarioWorld)
-                {
-                    // Randomize the banned part and store it as an integer.
-                    currentBannedPart = GetRandomIndex(Part.GetSuperMarioWorldParts());
-                    currentBannedPartName = Part.GetSuperMarioWorldParts()[currentBannedPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.NewSuperMarioBrosU)
-                {
-                    // Randomize the banned part and store it as an integer.
-                    currentBannedPart = GetRandomIndex(Part.GetNewSuperMarioBrosUParts());
-                    currentBannedPartName = Part.GetNewSuperMarioBrosUParts()[currentBannedPart].ToString();
-                }
-                else if (currentGameStyle == (int)GameStyle.SuperMario3DWorld)
-                {
-                    // Randomize the banned part and store it as an integer.
-                    currentBannedPart = GetRandomIndex(Part.GetSuperMario3dWorldParts());
-                    currentBannedPartName = Part.GetSuperMario3dWorldParts()[currentBannedPart].ToString();
-                }
+                currentBannedPart = GetRandomIndex(Part.GetParts((GameStyle)currentGameStyle));
             }
             while (currentPrimaryPart == currentBannedPart || currentSecondaryPart == currentBannedPart);
 
@@ -220,9 +99,9 @@ namespace IronMarioChef
             }
 
             // Assign the randomized parts to the textboxes.
-            textBoxPrimaryPart.Text = currentPrimaryPartName;
-            textBoxSecondaryPart.Text = currentSecondaryPartName;
-            textBoxBannedPart.Text = currentBannedPartName;
+            textBoxPrimaryPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentPrimaryPart].ToString();
+            textBoxSecondaryPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentSecondaryPart].ToString();
+            textBoxBannedPart.Text = Part.GetParts((GameStyle)currentGameStyle)[currentBannedPart].ToString();
         }
 
         /// <summary>
