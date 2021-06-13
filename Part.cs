@@ -19,7 +19,7 @@ namespace IronMarioChef
         // Instance variables, unique to each part.
         private int partId;
         private string partName;
-        private bool[] validStyles;
+        private bool[] validStyles = new bool[5];
 
         // Static variables, shared among all parts.
         private static int totalParts = 0;
@@ -30,7 +30,7 @@ namespace IronMarioChef
         private static int sm3dwParts = 0;
 
         // A list of all parts that will be added to as parts are created.
-        private static List<Part> parts;
+        private static List<Part> parts = new List<Part>();
 
         #endregion
         #region "Constructors"
@@ -245,7 +245,7 @@ namespace IronMarioChef
         /// Gets an array of all parts supported in the Super Mario Bros. style.
         /// </summary>
         /// <returns>An array of parts supported in Super Mario Bros. style.</returns>
-        public Part[] GetSuperMarioBrosParts()
+        public static Part[] GetSuperMarioBrosParts()
         {
             Part[] partsArray = new Part[smbParts];
             int collectedParts = 0;
@@ -266,7 +266,7 @@ namespace IronMarioChef
         /// Gets an array of all parts supported in the Super Mario Bros. 3 style.
         /// </summary>
         /// <returns>An array of parts supported in Super Mario Bros. 3 style.</returns>
-        public Part[] GetSuperMarioBros3Parts()
+        public static Part[] GetSuperMarioBros3Parts()
         {
             Part[] partsArray = new Part[smb3Parts];
             int collectedParts = 0;
@@ -287,7 +287,7 @@ namespace IronMarioChef
         /// Gets an array of all parts supported in the Super Mario World style.
         /// </summary>
         /// <returns>An array of parts supported in Super Mario World style.</returns>
-        public Part[] GetSuperMarioWorldParts()
+        public static Part[] GetSuperMarioWorldParts()
         {
             Part[] partsArray = new Part[smwParts];
             int collectedParts = 0;
@@ -308,7 +308,7 @@ namespace IronMarioChef
         /// Gets an array of all parts supported in the New Super Mario Bros. U style.
         /// </summary>
         /// <returns>An array of parts supported in New Super Mario Bros. U style.</returns>
-        public Part[] GetNewSuperMarioBrosUParts()
+        public static Part[] GetNewSuperMarioBrosUParts()
         {
             Part[] partsArray = new Part[nsmbuParts];
             int collectedParts = 0;
@@ -329,7 +329,7 @@ namespace IronMarioChef
         /// Gets an array of all parts supported in the Super Mario 3D World style.
         /// </summary>
         /// <returns>An array of parts supported in Super Mario 3D World style.</returns>
-        public Part[] GetSuperMario3dWorldParts()
+        public static Part[] GetSuperMario3dWorldParts()
         {
             Part[] partsArray = new Part[sm3dwParts];
             int collectedParts = 0;
@@ -346,8 +346,11 @@ namespace IronMarioChef
             return partsArray;
         }
 
-        public void InitializeParts()
+        public static void InitializeParts()
         {
+            // Start the list off fresh!
+            parts.Clear();
+
             // Terrain parts.
             parts.Add(new Part("? Block"));
             parts.Add(new Part("Brick Block", true, true, false, true, true));
@@ -451,9 +454,9 @@ namespace IronMarioChef
             parts.Add(new Part("Roy", false));
             parts.Add(new Part("Morton", false));
             parts.Add(new Part("Ludwig", false));
-            parts.Add(new Part("Mechakoopa"));
-            parts.Add(new Part("Blasta Mechakoopa"));
-            parts.Add(new Part("Zappa Mechakoopa"));
+            parts.Add(new Part("Mechakoopa", false));
+            parts.Add(new Part("Blasta Mechakoopa", false));
+            parts.Add(new Part("Zappa Mechakoopa", false));
 
             // Gizmos
             parts.Add(new Part("Arrow Sign"));
