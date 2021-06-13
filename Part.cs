@@ -346,6 +346,9 @@ namespace IronMarioChef
             return partsArray;
         }
 
+        /// <summary>
+        /// Creates the list of parts with their supported styles.
+        /// </summary>
         public static void InitializeParts()
         {
             // Start the list off fresh!
