@@ -1,6 +1,6 @@
 ﻿// Author:  Kyle Chapman
 // Created: May 10, 2021
-// Modified: June 13, 2021
+// Modified: June 16, 2021
 // Description:
 //  Code for a form used to select random attributes of a level for Super Mario Maker 2.
 // This includes a random game style, a random course type, and a random "primary part"
@@ -50,6 +50,8 @@ namespace IronMarioChef
         {
             InitializeComponent();
             Part.InitializeParts();
+
+            comboBoxGameStyle.SelectedIndex = 0;
         }
 
         #region "Event Handlers"
@@ -60,47 +62,61 @@ namespace IronMarioChef
         private void RandomizeClick(object sender, EventArgs e)
         {
             // Processing.
-            // Randomize the game style and store it as an integer.
-            currentGameStyle = (GameStyle)GetRandomIndex(gameStyles);
-
-            // Randomize the course style (as an integer) and a value indicating whether it's day or night.
-            currentCourseStyle = (CourseStyle)GetRandomIndex(courseStyles);
-            dayOrNight = randomValue.Next(0, 2);
-
-            // Randomize the primary part and store it as an integer.
-            currentPrimaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
-            
-            // Randomize the secondary part (as an integer) and repeat if it matches the primary part.
-            do
+            if (radioButtonGameStyleRandomize.Checked)
             {
-                currentSecondaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
-            }
-            while (currentPrimaryPart == currentSecondaryPart);
-
-            // Randomize the banned part (as an integer) and repeat if it matches the other parts selected so far.
-            do
-            {
-                currentBannedPart = GetRandomIndex(Part.GetParts(currentGameStyle));
-            }
-            while (currentPrimaryPart == currentBannedPart || currentSecondaryPart == currentBannedPart);
-
-            // Output.
-            // Output the text for the random game style.
-            textBoxGameStyle.Text = gameStyles[(int)currentGameStyle];
-
-            // Output the text for the random course style.
-            textBoxCourseStyle.Text = courseStyles[(int)currentCourseStyle];
-
-            // Add into the course style something identifying whether it's day or night.
-            if (dayOrNight == Day)
-            {
-                textBoxCourseStyle.Text += " (Day)";
+                // Randomize the game style and store it as an integer.
+                currentGameStyle = (GameStyle)GetRandomIndex(gameStyles);
             }
             else
             {
-                textBoxCourseStyle.Text += " (Night)";
+                currentGameStyle = (GameStyle)comboBoxGameStyle.SelectedIndex;
             }
 
+            if (radioButtonCourseStyleRandomize.Checked)
+            {
+                // Randomize the course style (as an integer) and a value indicating whether it's day or night.
+                currentCourseStyle = (CourseStyle)GetRandomIndex(courseStyles);
+                dayOrNight = randomValue.Next(0, 2);
+            }
+            else
+            {
+                currentCourseStyle = (CourseStyle)comboBoxCourseStyle.SelectedIndex;
+                dayOrNight = comboBoxDayNight.SelectedIndex;
+            }
+
+            if (radioButtonPrimaryRandomize.Checked)
+            {
+                // Randomize the primary part and store it as an integer.
+                currentPrimaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+            }
+
+            if (radioButtonSecondaryRandomize.Checked)
+            {
+                // Randomize the secondary part (as an integer) and repeat if it matches the primary part.
+                do
+                {
+                    currentSecondaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+                }
+                while (currentPrimaryPart == currentSecondaryPart);
+            }
+
+            if (radioButtonBannedRandomize.Checked)
+            {
+                // Randomize the banned part (as an integer) and repeat if it matches the other parts selected so far.
+                do
+                {
+                    currentBannedPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+                }
+                while (currentPrimaryPart == currentBannedPart || currentSecondaryPart == currentBannedPart);
+            }
+
+            // Output.
+            // Output the text for the random game style.
+            comboBoxGameStyle.SelectedIndex = (int)currentGameStyle;
+            // Output the text for the random course style.
+            comboBoxCourseStyle.SelectedIndex = (int)currentCourseStyle;
+            // Add into the course style something identifying whether it's day or night.
+            comboBoxDayNight.SelectedIndex = dayOrNight;
             // Assign the randomized parts to the textboxes.
             textBoxPrimaryPart.Text = Part.GetParts(currentGameStyle)[currentPrimaryPart].ToString();
             textBoxSecondaryPart.Text = Part.GetParts(currentGameStyle)[currentSecondaryPart].ToString();
@@ -113,11 +129,19 @@ namespace IronMarioChef
         private void ResetClick(object sender, EventArgs e)
         {
             // Clear all of the output controls.
-            textBoxGameStyle.Clear();
-            textBoxCourseStyle.Clear();
+            comboBoxGameStyle.SelectedIndex = 0;
+            comboBoxCourseStyle.SelectedItem = null;
+            comboBoxDayNight.SelectedItem = null;
             textBoxPrimaryPart.Clear();
             textBoxSecondaryPart.Clear();
             textBoxBannedPart.Clear();
+
+            // Set all radiobuttons to their default checked position.
+            radioButtonGameStyleRandomize.Checked = true;
+            radioButtonCourseStyleRandomize.Checked = true;
+            radioButtonPrimaryRandomize.Checked = true;
+            radioButtonSecondaryRandomize.Checked = true;
+            radioButtonBannedRandomize.Checked = true;
 
             // Set focus to make repeated use easier.
             buttonRandomize.Focus();

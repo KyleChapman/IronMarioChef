@@ -489,17 +489,17 @@ namespace IronMarioChef
                     smb3Parts.Add(candidatePart);
                 }
                 // If the part is SMW, add it to the list.
-                else if (candidatePart.InSuperMarioWorld)
+                if (candidatePart.InSuperMarioWorld)
                 {
                     smwParts.Add(candidatePart);
                 }
                 // If the part is NSMBU, add it to the list.
-                else if (candidatePart.InNewSuperMarioBrosU)
+                if (candidatePart.InNewSuperMarioBrosU)
                 {
                     nsmbuParts.Add(candidatePart);
                 }
                 // If the part is SM3DW, add it to the list.
-                else if (candidatePart.InSuperMario3dWorld)
+                if (candidatePart.InSuperMario3dWorld)
                 {
                     sm3dwParts.Add(candidatePart);
                 }
