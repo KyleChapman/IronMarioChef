@@ -257,19 +257,16 @@ namespace IronMarioChef
             {
                 return smb3Parts;
             }
-
             // SMW is requested; return all SMW parts.
             else if (style == GameStyle.SuperMarioWorld)
             {
                 return smwParts;
             }
-
             // NSMBU is requested; return all NSMBU parts.
             else if (style == GameStyle.NewSuperMarioBrosU)
             {
                 return nsmbuParts;
             }
-
             // Else, all that's left is SM3DW. Return that.
             else
             {

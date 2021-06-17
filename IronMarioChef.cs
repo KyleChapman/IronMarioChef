@@ -37,10 +37,6 @@ namespace IronMarioChef
         string[] gameStyles = { "Super Mario Bros.", "Super Mario Bros. 3", "Super Mario World", "New Super Mario Bros. U", "Super Mario 3D World" };
         string[] courseStyles = { "Ground", "Underground", "Underwater", "Ghost House", "Castle", "Airship", "Forest", "Sky", "Desert", "Snow"};
 
-        // No need for an enumeration when there are only two options for day/night, right?
-        const int Day = 0;
-        const int Night = 1;
-
         #endregion
 
         /// <summary>
@@ -120,11 +116,11 @@ namespace IronMarioChef
             }
 
             // Output.
-            // Output the text for the random game style.
+            // Set the comboBox value for the random game style.
             comboBoxGameStyle.SelectedIndex = (int)currentGameStyle;
-            // Output the text for the random course style.
+            // Set the comboBox value for the random course style.
             comboBoxCourseStyle.SelectedIndex = (int)currentCourseStyle;
-            // Add into the course style something identifying whether it's day or night.
+            // Set the comboBox value identifying whether it's day or night.
             comboBoxDayNight.SelectedIndex = dayOrNight;
             // Assign the randomized parts to the textboxes.
             textBoxPrimaryPart.Text = currentPrimaryPart.ToString();
@@ -137,8 +133,11 @@ namespace IronMarioChef
         /// </summary>
         private void ResetClick(object sender, EventArgs e)
         {
-            // Clear all of the output controls.
+            // Select a default index for comboBoxGameStyle.
+            // You can't just make this one null since it's important for all the randomization features; it could cause a crash.
             comboBoxGameStyle.SelectedIndex = 0;
+            
+            // Clear all of the output controls.
             comboBoxCourseStyle.SelectedItem = null;
             comboBoxDayNight.SelectedItem = null;
             textBoxPrimaryPart.Clear();
