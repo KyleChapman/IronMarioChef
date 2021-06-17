@@ -27,9 +27,9 @@ namespace IronMarioChef
         GameStyle currentGameStyle;
         CourseStyle currentCourseStyle;
         int dayOrNight;
-        int currentPrimaryPart;
-        int currentSecondaryPart;
-        int currentBannedPart;
+        Part currentPrimaryPart;
+        Part currentSecondaryPart;
+        Part currentBannedPart;
         
         Random randomValue = new Random();
 
@@ -62,50 +62,59 @@ namespace IronMarioChef
         private void RandomizeClick(object sender, EventArgs e)
         {
             // Processing.
+            // If the user wants to randomize the game style...
             if (radioButtonGameStyleRandomize.Checked)
             {
                 // Randomize the game style and store it as an integer.
                 currentGameStyle = (GameStyle)GetRandomIndex(gameStyles);
             }
+            // If the user does not want to randomize the game style...
             else
             {
+                // Set the currentGameStyle in the code to match the current selection.
                 currentGameStyle = (GameStyle)comboBoxGameStyle.SelectedIndex;
             }
 
+            // If the user wants to randomize the course style...
             if (radioButtonCourseStyleRandomize.Checked)
             {
                 // Randomize the course style (as an integer) and a value indicating whether it's day or night.
                 currentCourseStyle = (CourseStyle)GetRandomIndex(courseStyles);
                 dayOrNight = randomValue.Next(0, 2);
             }
+            // If the user does not want to randomize the course style...
             else
             {
+                // Set the course style values in the code to match the current selections.
                 currentCourseStyle = (CourseStyle)comboBoxCourseStyle.SelectedIndex;
                 dayOrNight = comboBoxDayNight.SelectedIndex;
             }
 
+            // If the user wants to randomize the primary part...
             if (radioButtonPrimaryRandomize.Checked)
             {
                 // Randomize the primary part and store it as an integer.
-                currentPrimaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+                currentPrimaryPart = GetRandomPart(Part.GetParts(currentGameStyle));
             }
 
+            // If the user wants to randomize the secondary part...
             if (radioButtonSecondaryRandomize.Checked)
             {
                 // Randomize the secondary part (as an integer) and repeat if it matches the primary part.
                 do
                 {
-                    currentSecondaryPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+                    currentSecondaryPart = GetRandomPart(Part.GetParts(currentGameStyle));
                 }
                 while (currentPrimaryPart == currentSecondaryPart);
             }
 
+            // If the user wants to randomize the banned part...
             if (radioButtonBannedRandomize.Checked)
             {
                 // Randomize the banned part (as an integer) and repeat if it matches the other parts selected so far.
                 do
                 {
-                    currentBannedPart = GetRandomIndex(Part.GetParts(currentGameStyle));
+                    currentBannedPart = GetRandomPart(Part.GetParts(currentGameStyle));
                 }
                 while (currentPrimaryPart == currentBannedPart || currentSecondaryPart == currentBannedPart);
             }
@@ -118,9 +127,9 @@ namespace IronMarioChef
             // Add into the course style something identifying whether it's day or night.
             comboBoxDayNight.SelectedIndex = dayOrNight;
             // Assign the randomized parts to the textboxes.
-            textBoxPrimaryPart.Text = Part.GetParts(currentGameStyle)[currentPrimaryPart].ToString();
-            textBoxSecondaryPart.Text = Part.GetParts(currentGameStyle)[currentSecondaryPart].ToString();
-            textBoxBannedPart.Text = Part.GetParts(currentGameStyle)[currentBannedPart].ToString();
+            textBoxPrimaryPart.Text = currentPrimaryPart.ToString();
+            textBoxSecondaryPart.Text = currentSecondaryPart.ToString();
+            textBoxBannedPart.Text = currentBannedPart.ToString();
         }
 
         /// <summary>
@@ -171,15 +180,15 @@ namespace IronMarioChef
         }
 
         /// <summary>
-        /// Returns a random index from a List of Parts.
+        /// Returns a random Part from a List of Parts.
         /// </summary>
-        /// <returns>A random integer between 0 and the length of the List</returns>
-        private int GetRandomIndex(List<Part> listToRandomize)
+        /// <returns>A random Part from the List</returns>
+        private Part GetRandomPart(List<Part> listToRandomize)
         {
             // Generate a random number between 0 and the length of the array.
             int randomIndex = randomValue.Next(0, listToRandomize.Count);
 
-            return randomIndex;
+            return listToRandomize[randomIndex];
         }
 
         #endregion
