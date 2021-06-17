@@ -144,6 +144,7 @@ namespace IronMarioChef
             this.radioButtonGameStyleLock.Size = new System.Drawing.Size(109, 24);
             this.radioButtonGameStyleLock.TabIndex = 2;
             this.radioButtonGameStyleLock.Text = "Lock/Ignore";
+            this.toolTip.SetToolTip(this.radioButtonGameStyleLock, "Select to avoid randomizing the game style");
             this.radioButtonGameStyleLock.UseVisualStyleBackColor = true;
             // 
             // radioButtonGameStyleRandomize
@@ -156,6 +157,7 @@ namespace IronMarioChef
             this.radioButtonGameStyleRandomize.TabIndex = 1;
             this.radioButtonGameStyleRandomize.TabStop = true;
             this.radioButtonGameStyleRandomize.Text = "Randomize";
+            this.toolTip.SetToolTip(this.radioButtonGameStyleRandomize, "Select to randomize the game style");
             this.radioButtonGameStyleRandomize.UseVisualStyleBackColor = true;
             // 
             // comboBoxGameStyle
@@ -173,6 +175,7 @@ namespace IronMarioChef
             this.comboBoxGameStyle.Name = "comboBoxGameStyle";
             this.comboBoxGameStyle.Size = new System.Drawing.Size(244, 28);
             this.comboBoxGameStyle.TabIndex = 3;
+            this.toolTip.SetToolTip(this.comboBoxGameStyle, "Displays and allows selection of a game style");
             // 
             // groupBoxCourseStyle
             // 
@@ -195,6 +198,7 @@ namespace IronMarioChef
             this.radioButtonCourseStyleLock.Size = new System.Drawing.Size(109, 24);
             this.radioButtonCourseStyleLock.TabIndex = 6;
             this.radioButtonCourseStyleLock.Text = "Lock/Ignore";
+            this.toolTip.SetToolTip(this.radioButtonCourseStyleLock, "Select to avoid randomizing the course style");
             this.radioButtonCourseStyleLock.UseVisualStyleBackColor = true;
             // 
             // comboBoxDayNight
@@ -209,6 +213,7 @@ namespace IronMarioChef
             this.comboBoxDayNight.Name = "comboBoxDayNight";
             this.comboBoxDayNight.Size = new System.Drawing.Size(112, 28);
             this.comboBoxDayNight.TabIndex = 8;
+            this.toolTip.SetToolTip(this.comboBoxDayNight, "Displays and allows selection between day and night courses");
             // 
             // radioButtonCourseStyleRandomize
             // 
@@ -220,6 +225,7 @@ namespace IronMarioChef
             this.radioButtonCourseStyleRandomize.TabIndex = 5;
             this.radioButtonCourseStyleRandomize.TabStop = true;
             this.radioButtonCourseStyleRandomize.Text = "Randomize";
+            this.toolTip.SetToolTip(this.radioButtonCourseStyleRandomize, "Select to randomize the course style");
             this.radioButtonCourseStyleRandomize.UseVisualStyleBackColor = true;
             // 
             // comboBoxCourseStyle
@@ -242,6 +248,7 @@ namespace IronMarioChef
             this.comboBoxCourseStyle.Name = "comboBoxCourseStyle";
             this.comboBoxCourseStyle.Size = new System.Drawing.Size(126, 28);
             this.comboBoxCourseStyle.TabIndex = 7;
+            this.toolTip.SetToolTip(this.comboBoxCourseStyle, "Displays and allows selection of a course style");
             // 
             // groupBoxPrimaryPart
             // 
@@ -263,6 +270,7 @@ namespace IronMarioChef
             this.radioButtonPrimaryLock.Size = new System.Drawing.Size(109, 24);
             this.radioButtonPrimaryLock.TabIndex = 11;
             this.radioButtonPrimaryLock.Text = "Lock/Ignore";
+            this.toolTip.SetToolTip(this.radioButtonPrimaryLock, "Select to avoid randomizing the primary part");
             this.radioButtonPrimaryLock.UseVisualStyleBackColor = true;
             // 
             // radioButtonPrimaryRandomize
@@ -275,6 +283,7 @@ namespace IronMarioChef
             this.radioButtonPrimaryRandomize.TabIndex = 10;
             this.radioButtonPrimaryRandomize.TabStop = true;
             this.radioButtonPrimaryRandomize.Text = "Randomize";
+            this.toolTip.SetToolTip(this.radioButtonPrimaryRandomize, "Select to randomize the primary part");
             this.radioButtonPrimaryRandomize.UseVisualStyleBackColor = true;
             // 
             // groupBoxSecondaryPart
@@ -297,6 +306,7 @@ namespace IronMarioChef
             this.radioButtonSecondaryLock.Size = new System.Drawing.Size(109, 24);
             this.radioButtonSecondaryLock.TabIndex = 15;
             this.radioButtonSecondaryLock.Text = "Lock/Ignore";
+            this.toolTip.SetToolTip(this.radioButtonSecondaryLock, "Select to avoid randomizing the secondary part");
             this.radioButtonSecondaryLock.UseVisualStyleBackColor = true;
             // 
             // radioButtonSecondaryRandomize
@@ -309,6 +319,7 @@ namespace IronMarioChef
             this.radioButtonSecondaryRandomize.TabIndex = 14;
             this.radioButtonSecondaryRandomize.TabStop = true;
             this.radioButtonSecondaryRandomize.Text = "Randomize";
+            this.toolTip.SetToolTip(this.radioButtonSecondaryRandomize, "Select to randomize the secondary part");
             this.radioButtonSecondaryRandomize.UseVisualStyleBackColor = true;
             // 
             // groupBoxBannedPart
@@ -332,6 +343,7 @@ namespace IronMarioChef
             this.radioButtonBannedLock.Size = new System.Drawing.Size(109, 24);
             this.radioButtonBannedLock.TabIndex = 19;
             this.radioButtonBannedLock.Text = "Lock/Ignore";
+            this.toolTip.SetToolTip(this.radioButtonBannedLock, "Select to avoid randomizing the banned part");
             this.radioButtonBannedLock.UseVisualStyleBackColor = true;
             // 
             // radioButtonBannedRandomize
@@ -344,6 +356,7 @@ namespace IronMarioChef
             this.radioButtonBannedRandomize.TabIndex = 18;
             this.radioButtonBannedRandomize.TabStop = true;
             this.radioButtonBannedRandomize.Text = "Randomize";
+            this.toolTip.SetToolTip(this.radioButtonBannedRandomize, "Select to randomize the banned part");
             this.radioButtonBannedRandomize.UseVisualStyleBackColor = true;
             // 
             // buttonAbout
@@ -353,6 +366,7 @@ namespace IronMarioChef
             this.buttonAbout.Size = new System.Drawing.Size(120, 30);
             this.buttonAbout.TabIndex = 23;
             this.buttonAbout.Text = "&About";
+            this.toolTip.SetToolTip(this.buttonAbout, "Click to learn about this application");
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.AboutClick);
             // 
