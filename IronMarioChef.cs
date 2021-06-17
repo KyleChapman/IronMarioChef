@@ -156,6 +156,18 @@ namespace IronMarioChef
         }
 
         /// <summary>
+        /// Displays information about this program.
+        /// </summary>
+        private void AboutClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Iron Mario Chef" + Environment.NewLine + Environment.NewLine +
+                "An application to help choose random theming for Super Mario Maker 2 courses." + Environment.NewLine + Environment.NewLine +
+                "By Kyle Chapman" + Environment.NewLine +
+                "As a demo for NETD 2202" + Environment.NewLine +
+                "May - June 2021", "About Iron Mario Chef", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
         /// Exits the application.
         /// </summary>
         private void ExitClick(object sender, EventArgs e)

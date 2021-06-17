@@ -39,23 +39,24 @@ namespace IronMarioChef
             this.buttonExit = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxGameStyle = new System.Windows.Forms.GroupBox();
-            this.groupBoxCourseStyle = new System.Windows.Forms.GroupBox();
-            this.groupBoxPrimaryPart = new System.Windows.Forms.GroupBox();
-            this.groupBoxSecondaryPart = new System.Windows.Forms.GroupBox();
-            this.groupBoxBannedPart = new System.Windows.Forms.GroupBox();
-            this.comboBoxGameStyle = new System.Windows.Forms.ComboBox();
-            this.comboBoxCourseStyle = new System.Windows.Forms.ComboBox();
-            this.comboBoxDayNight = new System.Windows.Forms.ComboBox();
-            this.radioButtonGameStyleRandomize = new System.Windows.Forms.RadioButton();
             this.radioButtonGameStyleLock = new System.Windows.Forms.RadioButton();
+            this.radioButtonGameStyleRandomize = new System.Windows.Forms.RadioButton();
+            this.comboBoxGameStyle = new System.Windows.Forms.ComboBox();
+            this.groupBoxCourseStyle = new System.Windows.Forms.GroupBox();
             this.radioButtonCourseStyleLock = new System.Windows.Forms.RadioButton();
+            this.comboBoxDayNight = new System.Windows.Forms.ComboBox();
             this.radioButtonCourseStyleRandomize = new System.Windows.Forms.RadioButton();
+            this.comboBoxCourseStyle = new System.Windows.Forms.ComboBox();
+            this.groupBoxPrimaryPart = new System.Windows.Forms.GroupBox();
             this.radioButtonPrimaryLock = new System.Windows.Forms.RadioButton();
             this.radioButtonPrimaryRandomize = new System.Windows.Forms.RadioButton();
+            this.groupBoxSecondaryPart = new System.Windows.Forms.GroupBox();
             this.radioButtonSecondaryLock = new System.Windows.Forms.RadioButton();
             this.radioButtonSecondaryRandomize = new System.Windows.Forms.RadioButton();
+            this.groupBoxBannedPart = new System.Windows.Forms.GroupBox();
             this.radioButtonBannedLock = new System.Windows.Forms.RadioButton();
             this.radioButtonBannedRandomize = new System.Windows.Forms.RadioButton();
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.groupBoxGameStyle.SuspendLayout();
             this.groupBoxCourseStyle.SuspendLayout();
             this.groupBoxPrimaryPart.SuspendLayout();
@@ -69,7 +70,7 @@ namespace IronMarioChef
             this.textBoxPrimaryPart.Name = "textBoxPrimaryPart";
             this.textBoxPrimaryPart.ReadOnly = true;
             this.textBoxPrimaryPart.Size = new System.Drawing.Size(244, 27);
-            this.textBoxPrimaryPart.TabIndex = 5;
+            this.textBoxPrimaryPart.TabIndex = 12;
             this.toolTip.SetToolTip(this.textBoxPrimaryPart, "Displays the selected primary theme part");
             // 
             // textBoxSecondaryPart
@@ -78,7 +79,7 @@ namespace IronMarioChef
             this.textBoxSecondaryPart.Name = "textBoxSecondaryPart";
             this.textBoxSecondaryPart.ReadOnly = true;
             this.textBoxSecondaryPart.Size = new System.Drawing.Size(244, 27);
-            this.textBoxSecondaryPart.TabIndex = 7;
+            this.textBoxSecondaryPart.TabIndex = 16;
             this.toolTip.SetToolTip(this.textBoxSecondaryPart, "Displays the selected secondary theme part");
             // 
             // textBoxBannedPart
@@ -87,15 +88,15 @@ namespace IronMarioChef
             this.textBoxBannedPart.Name = "textBoxBannedPart";
             this.textBoxBannedPart.ReadOnly = true;
             this.textBoxBannedPart.Size = new System.Drawing.Size(244, 27);
-            this.textBoxBannedPart.TabIndex = 9;
+            this.textBoxBannedPart.TabIndex = 20;
             this.toolTip.SetToolTip(this.textBoxBannedPart, "Displays the selected banned part");
             // 
             // buttonRandomize
             // 
-            this.buttonRandomize.Location = new System.Drawing.Point(72, 307);
+            this.buttonRandomize.Location = new System.Drawing.Point(12, 307);
             this.buttonRandomize.Name = "buttonRandomize";
-            this.buttonRandomize.Size = new System.Drawing.Size(108, 29);
-            this.buttonRandomize.TabIndex = 10;
+            this.buttonRandomize.Size = new System.Drawing.Size(120, 30);
+            this.buttonRandomize.TabIndex = 21;
             this.buttonRandomize.Text = "Randomi&ze!";
             this.toolTip.SetToolTip(this.buttonRandomize, "Click to randomize the selections above");
             this.buttonRandomize.UseVisualStyleBackColor = true;
@@ -103,10 +104,10 @@ namespace IronMarioChef
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(248, 307);
+            this.buttonReset.Location = new System.Drawing.Point(158, 307);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(94, 29);
-            this.buttonReset.TabIndex = 11;
+            this.buttonReset.Size = new System.Drawing.Size(120, 30);
+            this.buttonReset.TabIndex = 22;
             this.buttonReset.Text = "&Reset";
             this.toolTip.SetToolTip(this.buttonReset, "Click to reset the form to its default state");
             this.buttonReset.UseVisualStyleBackColor = true;
@@ -114,10 +115,10 @@ namespace IronMarioChef
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(410, 307);
+            this.buttonExit.Location = new System.Drawing.Point(450, 307);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(94, 29);
-            this.buttonExit.TabIndex = 12;
+            this.buttonExit.Size = new System.Drawing.Size(120, 30);
+            this.buttonExit.TabIndex = 24;
             this.buttonExit.Text = "E&xit";
             this.toolTip.SetToolTip(this.buttonExit, "Click to exit the application");
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -131,58 +132,31 @@ namespace IronMarioChef
             this.groupBoxGameStyle.Location = new System.Drawing.Point(12, 12);
             this.groupBoxGameStyle.Name = "groupBoxGameStyle";
             this.groupBoxGameStyle.Size = new System.Drawing.Size(558, 50);
-            this.groupBoxGameStyle.TabIndex = 13;
+            this.groupBoxGameStyle.TabIndex = 0;
             this.groupBoxGameStyle.TabStop = false;
             this.groupBoxGameStyle.Text = "&Game Style:";
             // 
-            // groupBoxCourseStyle
+            // radioButtonGameStyleLock
             // 
-            this.groupBoxCourseStyle.Controls.Add(this.radioButtonCourseStyleLock);
-            this.groupBoxCourseStyle.Controls.Add(this.comboBoxDayNight);
-            this.groupBoxCourseStyle.Controls.Add(this.radioButtonCourseStyleRandomize);
-            this.groupBoxCourseStyle.Controls.Add(this.comboBoxCourseStyle);
-            this.groupBoxCourseStyle.Location = new System.Drawing.Point(12, 68);
-            this.groupBoxCourseStyle.Name = "groupBoxCourseStyle";
-            this.groupBoxCourseStyle.Size = new System.Drawing.Size(558, 50);
-            this.groupBoxCourseStyle.TabIndex = 14;
-            this.groupBoxCourseStyle.TabStop = false;
-            this.groupBoxCourseStyle.Text = "&Course Style:";
+            this.radioButtonGameStyleLock.AutoSize = true;
+            this.radioButtonGameStyleLock.Location = new System.Drawing.Point(163, 18);
+            this.radioButtonGameStyleLock.Name = "radioButtonGameStyleLock";
+            this.radioButtonGameStyleLock.Size = new System.Drawing.Size(109, 24);
+            this.radioButtonGameStyleLock.TabIndex = 2;
+            this.radioButtonGameStyleLock.Text = "Lock/Ignore";
+            this.radioButtonGameStyleLock.UseVisualStyleBackColor = true;
             // 
-            // groupBoxPrimaryPart
+            // radioButtonGameStyleRandomize
             // 
-            this.groupBoxPrimaryPart.Controls.Add(this.radioButtonPrimaryLock);
-            this.groupBoxPrimaryPart.Controls.Add(this.textBoxPrimaryPart);
-            this.groupBoxPrimaryPart.Controls.Add(this.radioButtonPrimaryRandomize);
-            this.groupBoxPrimaryPart.Location = new System.Drawing.Point(12, 124);
-            this.groupBoxPrimaryPart.Name = "groupBoxPrimaryPart";
-            this.groupBoxPrimaryPart.Size = new System.Drawing.Size(558, 50);
-            this.groupBoxPrimaryPart.TabIndex = 15;
-            this.groupBoxPrimaryPart.TabStop = false;
-            this.groupBoxPrimaryPart.Text = "&Primary Theme Part:";
-            // 
-            // groupBoxSecondaryPart
-            // 
-            this.groupBoxSecondaryPart.Controls.Add(this.radioButtonSecondaryLock);
-            this.groupBoxSecondaryPart.Controls.Add(this.textBoxSecondaryPart);
-            this.groupBoxSecondaryPart.Controls.Add(this.radioButtonSecondaryRandomize);
-            this.groupBoxSecondaryPart.Location = new System.Drawing.Point(12, 180);
-            this.groupBoxSecondaryPart.Name = "groupBoxSecondaryPart";
-            this.groupBoxSecondaryPart.Size = new System.Drawing.Size(558, 50);
-            this.groupBoxSecondaryPart.TabIndex = 14;
-            this.groupBoxSecondaryPart.TabStop = false;
-            this.groupBoxSecondaryPart.Text = "&Secondary Theme Part:";
-            // 
-            // groupBoxBannedPart
-            // 
-            this.groupBoxBannedPart.Controls.Add(this.radioButtonBannedLock);
-            this.groupBoxBannedPart.Controls.Add(this.textBoxBannedPart);
-            this.groupBoxBannedPart.Controls.Add(this.radioButtonBannedRandomize);
-            this.groupBoxBannedPart.Location = new System.Drawing.Point(12, 236);
-            this.groupBoxBannedPart.Name = "groupBoxBannedPart";
-            this.groupBoxBannedPart.Size = new System.Drawing.Size(558, 50);
-            this.groupBoxBannedPart.TabIndex = 14;
-            this.groupBoxBannedPart.TabStop = false;
-            this.groupBoxBannedPart.Text = "&Banned Part:";
+            this.radioButtonGameStyleRandomize.AutoSize = true;
+            this.radioButtonGameStyleRandomize.Checked = true;
+            this.radioButtonGameStyleRandomize.Location = new System.Drawing.Point(19, 18);
+            this.radioButtonGameStyleRandomize.Name = "radioButtonGameStyleRandomize";
+            this.radioButtonGameStyleRandomize.Size = new System.Drawing.Size(105, 24);
+            this.radioButtonGameStyleRandomize.TabIndex = 1;
+            this.radioButtonGameStyleRandomize.TabStop = true;
+            this.radioButtonGameStyleRandomize.Text = "Randomize";
+            this.radioButtonGameStyleRandomize.UseVisualStyleBackColor = true;
             // 
             // comboBoxGameStyle
             // 
@@ -198,7 +172,55 @@ namespace IronMarioChef
             this.comboBoxGameStyle.MaxDropDownItems = 10;
             this.comboBoxGameStyle.Name = "comboBoxGameStyle";
             this.comboBoxGameStyle.Size = new System.Drawing.Size(244, 28);
-            this.comboBoxGameStyle.TabIndex = 0;
+            this.comboBoxGameStyle.TabIndex = 3;
+            // 
+            // groupBoxCourseStyle
+            // 
+            this.groupBoxCourseStyle.Controls.Add(this.radioButtonCourseStyleLock);
+            this.groupBoxCourseStyle.Controls.Add(this.comboBoxDayNight);
+            this.groupBoxCourseStyle.Controls.Add(this.radioButtonCourseStyleRandomize);
+            this.groupBoxCourseStyle.Controls.Add(this.comboBoxCourseStyle);
+            this.groupBoxCourseStyle.Location = new System.Drawing.Point(12, 68);
+            this.groupBoxCourseStyle.Name = "groupBoxCourseStyle";
+            this.groupBoxCourseStyle.Size = new System.Drawing.Size(558, 50);
+            this.groupBoxCourseStyle.TabIndex = 4;
+            this.groupBoxCourseStyle.TabStop = false;
+            this.groupBoxCourseStyle.Text = "&Course Style:";
+            // 
+            // radioButtonCourseStyleLock
+            // 
+            this.radioButtonCourseStyleLock.AutoSize = true;
+            this.radioButtonCourseStyleLock.Location = new System.Drawing.Point(163, 18);
+            this.radioButtonCourseStyleLock.Name = "radioButtonCourseStyleLock";
+            this.radioButtonCourseStyleLock.Size = new System.Drawing.Size(109, 24);
+            this.radioButtonCourseStyleLock.TabIndex = 6;
+            this.radioButtonCourseStyleLock.Text = "Lock/Ignore";
+            this.radioButtonCourseStyleLock.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxDayNight
+            // 
+            this.comboBoxDayNight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDayNight.FormattingEnabled = true;
+            this.comboBoxDayNight.Items.AddRange(new object[] {
+            "Day",
+            "Night"});
+            this.comboBoxDayNight.Location = new System.Drawing.Point(440, 16);
+            this.comboBoxDayNight.MaxDropDownItems = 10;
+            this.comboBoxDayNight.Name = "comboBoxDayNight";
+            this.comboBoxDayNight.Size = new System.Drawing.Size(112, 28);
+            this.comboBoxDayNight.TabIndex = 8;
+            // 
+            // radioButtonCourseStyleRandomize
+            // 
+            this.radioButtonCourseStyleRandomize.AutoSize = true;
+            this.radioButtonCourseStyleRandomize.Checked = true;
+            this.radioButtonCourseStyleRandomize.Location = new System.Drawing.Point(19, 18);
+            this.radioButtonCourseStyleRandomize.Name = "radioButtonCourseStyleRandomize";
+            this.radioButtonCourseStyleRandomize.Size = new System.Drawing.Size(105, 24);
+            this.radioButtonCourseStyleRandomize.TabIndex = 5;
+            this.radioButtonCourseStyleRandomize.TabStop = true;
+            this.radioButtonCourseStyleRandomize.Text = "Randomize";
+            this.radioButtonCourseStyleRandomize.UseVisualStyleBackColor = true;
             // 
             // comboBoxCourseStyle
             // 
@@ -219,64 +241,19 @@ namespace IronMarioChef
             this.comboBoxCourseStyle.MaxDropDownItems = 10;
             this.comboBoxCourseStyle.Name = "comboBoxCourseStyle";
             this.comboBoxCourseStyle.Size = new System.Drawing.Size(126, 28);
-            this.comboBoxCourseStyle.TabIndex = 1;
+            this.comboBoxCourseStyle.TabIndex = 7;
             // 
-            // comboBoxDayNight
+            // groupBoxPrimaryPart
             // 
-            this.comboBoxDayNight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDayNight.FormattingEnabled = true;
-            this.comboBoxDayNight.Items.AddRange(new object[] {
-            "Day",
-            "Night"});
-            this.comboBoxDayNight.Location = new System.Drawing.Point(440, 16);
-            this.comboBoxDayNight.MaxDropDownItems = 10;
-            this.comboBoxDayNight.Name = "comboBoxDayNight";
-            this.comboBoxDayNight.Size = new System.Drawing.Size(112, 28);
-            this.comboBoxDayNight.TabIndex = 2;
-            // 
-            // radioButtonGameStyleRandomize
-            // 
-            this.radioButtonGameStyleRandomize.AutoSize = true;
-            this.radioButtonGameStyleRandomize.Checked = true;
-            this.radioButtonGameStyleRandomize.Location = new System.Drawing.Point(19, 18);
-            this.radioButtonGameStyleRandomize.Name = "radioButtonGameStyleRandomize";
-            this.radioButtonGameStyleRandomize.Size = new System.Drawing.Size(105, 24);
-            this.radioButtonGameStyleRandomize.TabIndex = 1;
-            this.radioButtonGameStyleRandomize.TabStop = true;
-            this.radioButtonGameStyleRandomize.Text = "Randomize";
-            this.radioButtonGameStyleRandomize.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonGameStyleLock
-            // 
-            this.radioButtonGameStyleLock.AutoSize = true;
-            this.radioButtonGameStyleLock.Location = new System.Drawing.Point(163, 18);
-            this.radioButtonGameStyleLock.Name = "radioButtonGameStyleLock";
-            this.radioButtonGameStyleLock.Size = new System.Drawing.Size(109, 24);
-            this.radioButtonGameStyleLock.TabIndex = 2;
-            this.radioButtonGameStyleLock.Text = "Lock/Ignore";
-            this.radioButtonGameStyleLock.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCourseStyleLock
-            // 
-            this.radioButtonCourseStyleLock.AutoSize = true;
-            this.radioButtonCourseStyleLock.Location = new System.Drawing.Point(163, 18);
-            this.radioButtonCourseStyleLock.Name = "radioButtonCourseStyleLock";
-            this.radioButtonCourseStyleLock.Size = new System.Drawing.Size(109, 24);
-            this.radioButtonCourseStyleLock.TabIndex = 4;
-            this.radioButtonCourseStyleLock.Text = "Lock/Ignore";
-            this.radioButtonCourseStyleLock.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonCourseStyleRandomize
-            // 
-            this.radioButtonCourseStyleRandomize.AutoSize = true;
-            this.radioButtonCourseStyleRandomize.Checked = true;
-            this.radioButtonCourseStyleRandomize.Location = new System.Drawing.Point(19, 18);
-            this.radioButtonCourseStyleRandomize.Name = "radioButtonCourseStyleRandomize";
-            this.radioButtonCourseStyleRandomize.Size = new System.Drawing.Size(105, 24);
-            this.radioButtonCourseStyleRandomize.TabIndex = 3;
-            this.radioButtonCourseStyleRandomize.TabStop = true;
-            this.radioButtonCourseStyleRandomize.Text = "Randomize";
-            this.radioButtonCourseStyleRandomize.UseVisualStyleBackColor = true;
+            this.groupBoxPrimaryPart.Controls.Add(this.radioButtonPrimaryLock);
+            this.groupBoxPrimaryPart.Controls.Add(this.textBoxPrimaryPart);
+            this.groupBoxPrimaryPart.Controls.Add(this.radioButtonPrimaryRandomize);
+            this.groupBoxPrimaryPart.Location = new System.Drawing.Point(12, 124);
+            this.groupBoxPrimaryPart.Name = "groupBoxPrimaryPart";
+            this.groupBoxPrimaryPart.Size = new System.Drawing.Size(558, 50);
+            this.groupBoxPrimaryPart.TabIndex = 9;
+            this.groupBoxPrimaryPart.TabStop = false;
+            this.groupBoxPrimaryPart.Text = "&Primary Theme Part:";
             // 
             // radioButtonPrimaryLock
             // 
@@ -284,7 +261,7 @@ namespace IronMarioChef
             this.radioButtonPrimaryLock.Location = new System.Drawing.Point(163, 18);
             this.radioButtonPrimaryLock.Name = "radioButtonPrimaryLock";
             this.radioButtonPrimaryLock.Size = new System.Drawing.Size(109, 24);
-            this.radioButtonPrimaryLock.TabIndex = 6;
+            this.radioButtonPrimaryLock.TabIndex = 11;
             this.radioButtonPrimaryLock.Text = "Lock/Ignore";
             this.radioButtonPrimaryLock.UseVisualStyleBackColor = true;
             // 
@@ -295,10 +272,22 @@ namespace IronMarioChef
             this.radioButtonPrimaryRandomize.Location = new System.Drawing.Point(19, 18);
             this.radioButtonPrimaryRandomize.Name = "radioButtonPrimaryRandomize";
             this.radioButtonPrimaryRandomize.Size = new System.Drawing.Size(105, 24);
-            this.radioButtonPrimaryRandomize.TabIndex = 5;
+            this.radioButtonPrimaryRandomize.TabIndex = 10;
             this.radioButtonPrimaryRandomize.TabStop = true;
             this.radioButtonPrimaryRandomize.Text = "Randomize";
             this.radioButtonPrimaryRandomize.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxSecondaryPart
+            // 
+            this.groupBoxSecondaryPart.Controls.Add(this.radioButtonSecondaryLock);
+            this.groupBoxSecondaryPart.Controls.Add(this.textBoxSecondaryPart);
+            this.groupBoxSecondaryPart.Controls.Add(this.radioButtonSecondaryRandomize);
+            this.groupBoxSecondaryPart.Location = new System.Drawing.Point(12, 180);
+            this.groupBoxSecondaryPart.Name = "groupBoxSecondaryPart";
+            this.groupBoxSecondaryPart.Size = new System.Drawing.Size(558, 50);
+            this.groupBoxSecondaryPart.TabIndex = 13;
+            this.groupBoxSecondaryPart.TabStop = false;
+            this.groupBoxSecondaryPart.Text = "&Secondary Theme Part:";
             // 
             // radioButtonSecondaryLock
             // 
@@ -306,7 +295,7 @@ namespace IronMarioChef
             this.radioButtonSecondaryLock.Location = new System.Drawing.Point(163, 18);
             this.radioButtonSecondaryLock.Name = "radioButtonSecondaryLock";
             this.radioButtonSecondaryLock.Size = new System.Drawing.Size(109, 24);
-            this.radioButtonSecondaryLock.TabIndex = 17;
+            this.radioButtonSecondaryLock.TabIndex = 15;
             this.radioButtonSecondaryLock.Text = "Lock/Ignore";
             this.radioButtonSecondaryLock.UseVisualStyleBackColor = true;
             // 
@@ -317,10 +306,23 @@ namespace IronMarioChef
             this.radioButtonSecondaryRandomize.Location = new System.Drawing.Point(19, 18);
             this.radioButtonSecondaryRandomize.Name = "radioButtonSecondaryRandomize";
             this.radioButtonSecondaryRandomize.Size = new System.Drawing.Size(105, 24);
-            this.radioButtonSecondaryRandomize.TabIndex = 16;
+            this.radioButtonSecondaryRandomize.TabIndex = 14;
             this.radioButtonSecondaryRandomize.TabStop = true;
             this.radioButtonSecondaryRandomize.Text = "Randomize";
             this.radioButtonSecondaryRandomize.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxBannedPart
+            // 
+            this.groupBoxBannedPart.Controls.Add(this.radioButtonBannedLock);
+            this.groupBoxBannedPart.Controls.Add(this.textBoxBannedPart);
+            this.groupBoxBannedPart.Controls.Add(this.radioButtonBannedRandomize);
+            this.groupBoxBannedPart.Location = new System.Drawing.Point(12, 236);
+            this.groupBoxBannedPart.Name = "groupBoxBannedPart";
+            this.groupBoxBannedPart.Size = new System.Drawing.Size(558, 50);
+            this.groupBoxBannedPart.TabIndex = 17;
+            this.groupBoxBannedPart.TabStop = false;
+            this.groupBoxBannedPart.Tag = "";
+            this.groupBoxBannedPart.Text = "&Banned Part:";
             // 
             // radioButtonBannedLock
             // 
@@ -344,6 +346,16 @@ namespace IronMarioChef
             this.radioButtonBannedRandomize.Text = "Randomize";
             this.radioButtonBannedRandomize.UseVisualStyleBackColor = true;
             // 
+            // buttonAbout
+            // 
+            this.buttonAbout.Location = new System.Drawing.Point(304, 307);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(120, 30);
+            this.buttonAbout.TabIndex = 23;
+            this.buttonAbout.Text = "&About";
+            this.buttonAbout.UseVisualStyleBackColor = true;
+            this.buttonAbout.Click += new System.EventHandler(this.AboutClick);
+            // 
             // formIronMarioChef
             // 
             this.AcceptButton = this.buttonRandomize;
@@ -351,6 +363,7 @@ namespace IronMarioChef
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonReset;
             this.ClientSize = new System.Drawing.Size(582, 353);
+            this.Controls.Add(this.buttonAbout);
             this.Controls.Add(this.groupBoxBannedPart);
             this.Controls.Add(this.groupBoxSecondaryPart);
             this.Controls.Add(this.groupBoxPrimaryPart);
@@ -405,6 +418,7 @@ namespace IronMarioChef
         private System.Windows.Forms.RadioButton radioButtonSecondaryRandomize;
         private System.Windows.Forms.RadioButton radioButtonBannedLock;
         private System.Windows.Forms.RadioButton radioButtonBannedRandomize;
+        private System.Windows.Forms.Button buttonAbout;
     }
 }
 
